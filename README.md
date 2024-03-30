@@ -1,4 +1,4 @@
-# Activation de l'Auto-Complétion pour Makefile
+# Activation de l'Auto-Complétion et Help pour Makefile
 
 Ce guide explique comment activer l'auto-complétion pour les cibles définies dans un `Makefile` sous Windows, en utilisant Git Bash.
 
@@ -7,7 +7,7 @@ Ce guide explique comment activer l'auto-complétion pour les cibles définies d
 - Git Bash installé (pour les utilisateurs Git Bash) ou
 - `make` installé dans l'environnement de votre choix
 
-## Configuration pour Git Bash
+## Configuration de l'Auto-Complétion
 
 ### Étape 1: Créer ou Modifier `.bashrc`
 
@@ -71,3 +71,61 @@ echo "Le fichier .bashrc a été chargé."
 Après avoir ajouté cette ligne à `.bashrc`, fermez Git Bash si c'est ouvert et relancez-le. Vous devriez voir le message "Le fichier .bashrc a été chargé." s'afficher, indiquant que `.bashrc` est correctement chargé au démarrage.
 
 En suivant ces étapes, vous vous assurez que votre fichier `.bashrc` est automatiquement chargé à chaque lancement de Git Bash, vous permettant de maintenir vos configurations et personnalisations Bash dans `.bashrc` et de les avoir appliquées à chaque session.
+
+## Configuration de l'Help
+
+Ce guide explique comment utiliser la fonction d'aide intégrée au `Makefile` pour générer un écran d'aide, affichant les commandes disponibles et leurs descriptions.
+
+## Fonctionnalité d'Aide
+
+La fonctionnalité d'aide est définie dans le `Makefile` sous la cible `help`. Elle utilise un script Bash externe (`makefile-functions.sh`) qui analyse le `Makefile` pour extraire et afficher les descriptions des tâches make. Chaque tâche doit être documentée avec un commentaire suivant le format `## Description` directement après la déclaration de la tâche.
+
+## Configuration du `Makefile`
+
+Pour utiliser cette fonctionnalité, assurez-vous que votre `Makefile` inclut la cible `help` définie comme suit :
+
+```makefile
+###################
+###### Help #######
+###################
+
+help: ## Display this help screen
+	@echo "Les commandes disponibles sont :"
+	@echo ""
+	@bash -c 'source makefile-functions.sh; generate_help "Makefile"'
+.PHONY: help
+```
+
+Assurez-vous également que chaque commande dans le `Makefile` est documentée avec un commentaire `##` pour sa description. Par exemple :
+
+```makefile
+build: ## Compile le projet.
+	@echo "Compilation du projet..."
+
+clean: ## Nettoie les fichiers temporaires.
+	@rm -rf ./temp
+```
+
+## Utilisation
+
+Pour afficher l'écran d'aide avec les descriptions des commandes disponibles, utilisez la commande suivante dans le terminal :
+
+```bash
+make help
+```
+
+Vous verrez une sortie listant toutes les commandes documentées dans votre `Makefile`, avec leurs descriptions. Par exemple :
+
+```
+Les commandes disponibles sont :
+
+##### App #####
+  make hello                          Start the project
+
+##### Help #####
+  make help                           Display this help screen
+```
+
+## Conclusion
+
+La fonction d'aide intégrée au `Makefile` simplifie la découverte et l'utilisation des commandes make disponibles dans votre projet. En documentant chaque commande avec une description, vous améliorez l'expérience pour les utilisateurs du `Makefile`, rendant plus facile la compréhension des tâches make et leur utilisation correcte.
