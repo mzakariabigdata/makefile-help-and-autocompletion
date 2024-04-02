@@ -1,6 +1,36 @@
 # Activation de l'Auto-Complétion et Help pour Makefile
 
-Ce guide explique comment activer l'auto-complétion pour les cibles définies dans un `Makefile` sous Windows, en utilisant Git Bash.
+L'utilisation d'un Makefile est particulièrement bénéfique dans le cadre d'un projet faisant appel à différentes technologies et exigeant l'activation de nombreuses commandes, nécessitant chacune une configuration préalable. Il est aussi essentiel pour structurer un enchaînement de commandes. Grâce au Makefile, toutes ces commandes peuvent être centralisées en un point d'accès unique, simplifiant ainsi leur mémorisation et leur exécution.
+
+Ce guide explique comment activer l'auto-complétion pour les cibles définies dans un Makefile sous Windows, en utilisant Git Bash, et comment activer l'autocomplétion. Voici une démonstration.
+
+## Démonstration
+
+Pour afficher l'écran d'aide avec les descriptions des commandes disponibles, utilisez la commande suivante dans le terminal :
+```bash
+make help
+```
+ou
+```bash
+make
+```
+
+Vous verrez une sortie listant toutes les commandes documentées dans votre Makefile, avec leurs descriptions. Par exemple :
+
+```bash
+Les commandes disponibles sont :
+##### App #####
+  make hello                          Start the project
+##### Help #####
+  make help                           Display this help screen
+Pour tester l'autocompilation, il suffit d'écrire "Make" suivi d'une tabulation. La liste des commandes s'affiche alors sur l'écran. (exemple de IAC)
+```
+
+```bash
+$ make app
+app                   app-build             app-explain           app-mini              app-schemas           app-state             app-validate
+app-archi             app-dati-to-archi     app-install           app-plan              app-secr
+```
 
 ## Prérequis
 
@@ -104,26 +134,6 @@ build: ## Compile le projet.
 
 clean: ## Nettoie les fichiers temporaires.
 	@rm -rf ./temp
-```
-
-## Utilisation
-
-Pour afficher l'écran d'aide avec les descriptions des commandes disponibles, utilisez la commande suivante dans le terminal :
-
-```bash
-make help
-```
-
-Vous verrez une sortie listant toutes les commandes documentées dans votre `Makefile`, avec leurs descriptions. Par exemple :
-
-```
-Les commandes disponibles sont :
-
-##### App #####
-  make hello                          Start the project
-
-##### Help #####
-  make help                           Display this help screen
 ```
 
 ## Conclusion
