@@ -23,8 +23,8 @@ Les commandes disponibles sont :
   make hello                          Start the project
 ##### Help #####
   make help                           Display this help screen
-Pour tester l'autocompilation, il suffit d'écrire "Make" suivi d'une tabulation. La liste des commandes s'affiche alors sur l'écran. (exemple de IAC)
 ```
+Pour tester l'autocompilation, il suffit d'écrire "Make" suivi d'une tabulation. La liste des commandes s'affiche alors sur l'écran. (exemple de IAC)
 
 ```bash
 $ make app
